@@ -1,17 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client"; // ✅ This is the correct import in React 18+
+import App from "./App";
+import { EmployeeProvider } from "./context/EmployeeContext"; // Assuming you're using this
+// import "./index.css"; // if you have global styles
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { AuthProvider } from "./context/AuthContext";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root")); // ✅ React 18 syntax
 root.render(
   <React.StrictMode>
-    <App />
+      <AuthProvider>
+    <EmployeeProvider>
+      <App />
+      
+    </EmployeeProvider>
+      </AuthProvider>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
